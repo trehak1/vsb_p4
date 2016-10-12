@@ -17,6 +17,10 @@ public class CounterService {
         counter.set(initialValue);
     }
 
+    public void set(int val) {
+        counter.set(val);
+    }
+
     public CounterValue getAndIncrement() {
         return new CounterValue(counter.getAndIncrement());
     }
