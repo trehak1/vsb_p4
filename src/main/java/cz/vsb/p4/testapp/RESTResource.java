@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
@@ -24,5 +25,12 @@ public class RESTResource {
     public CounterValue getAndIncrementCounterValue() {
         return counterService.getAndIncrement();
     }
+
+    @GET
+    @Path("/echo/{text}")
+    public String echo(@PathParam("text") String text) {
+        return text;
+    }
+
 
 }
