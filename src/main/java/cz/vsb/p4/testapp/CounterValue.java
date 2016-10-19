@@ -5,13 +5,19 @@ package cz.vsb.p4.testapp;
  */
 public class CounterValue {
 
-    private final Integer value;
+    private final String key;
+    private final Long value;
 
-    public CounterValue(Integer value) {
+    public CounterValue(String key, Long value) {
+        this.key = key;
         this.value = value;
     }
 
-    public Integer getValue() {
+    public String getKey() {
+        return key;
+    }
+
+    public Long getValue() {
         return value;
     }
 

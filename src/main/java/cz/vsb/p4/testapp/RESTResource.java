@@ -10,7 +10,7 @@ import javax.ws.rs.Produces;
 /**
  * Created by trehak on 10.10.2016.
  */
-@Path("/test")
+@Path("/counter")
 @Produces("application/json")
 public class RESTResource {
 
@@ -22,8 +22,9 @@ public class RESTResource {
     }
 
     @GET
-    public CounterValue getAndIncrementCounterValue() {
-        return counterService.getAndIncrement();
+    @Path("/inc/{key}")
+    public CounterValue getAndIncrementCounterValue(@PathParam("key") String key) {
+        return counterService.getAndIncrement(key);
     }
 
     @GET

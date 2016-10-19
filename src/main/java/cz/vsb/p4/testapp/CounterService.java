@@ -1,9 +1,7 @@
 package cz.vsb.p4.testapp;
 
-import org.springframework.beans.factory.annotation.Value;
+import com.google.common.util.concurrent.AtomicLongMap;
 import org.springframework.stereotype.Service;
-
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Created by trehak on 10.10.2016.
@@ -11,17 +9,20 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 public class CounterService {
 
-    private final AtomicInteger counter = new AtomicInteger(0);
+    private final AtomicLongMap counter = AtomicLongMap.create();
 
-    public CounterService(@Value("${counter.init.value}") int initialValue) {
-        counter.set(initialValue);
+    public CounterService() {
     }
 
-    public void set(int val) {
-        counter.set(val);
+    public void set(String key, long val) {
+        counter.put(key, val);
     }
 
-    public CounterValue getAndIncrement() {
-        return new CounterValue(counter.getAndIncrement());
+    public CounterValue getAndIncrement(String key) {
+        return new CounterValue(key, counter.getAndIncrement(key));
+    }
+
+    public CounterValue get(String key) {
+        return new CounterValue(key, counter.get(key));
     }
 }
