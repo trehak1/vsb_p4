@@ -21,14 +21,15 @@ public class CounterController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/getValue")
-    public String viewSchemas(@RequestParam("key") String key, Model model) {
+    public String readCounterValue(@RequestParam("key") String key,
+                                   Model model) {
         CounterValue counterValue = counterService.get(key);
         model.addAttribute("counterValue", counterValue);
         return "/value";
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/")
-    public String viewSchema() {
+    public String getIndex() {
         return "/index";
     }
 
