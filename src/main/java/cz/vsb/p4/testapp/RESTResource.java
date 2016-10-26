@@ -27,7 +27,7 @@ public class RESTResource {
 
     @GET
     @Path("/inc/{key}")
-    public CounterValue getAndIncrementCounterValue(@PathParam("key") String key) {
+    public CounterValue getAndIncrementCounterValue(@PathParam("key") String key) throws Exception {
         return counterService.getAndIncrement(key);
     }
 

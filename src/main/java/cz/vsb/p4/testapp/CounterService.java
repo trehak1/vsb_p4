@@ -24,7 +24,7 @@ public class CounterService {
     }
 
     @PostConstruct
-    public void postConstruct() {
+    public void postConstruct() throws Exception {
         Map<String, Long> vals = dao.loadKeyValues();
 //        vals.entrySet().forEach(entry -> counter.put(entry.getKey(), entry.getValue()));
         for (Map.Entry<String, Long> entry : vals.entrySet()) {
@@ -32,14 +32,14 @@ public class CounterService {
         }
     }
 
-    public void set(String key, long val) {
+    public void set(String key, long val) throws Exception {
         dao.storeKeyValue(key, val);
         counter.put(key, val);
     }
 
-    public CounterValue getAndIncrement(String key) {
+    public CounterValue getAndIncrement(String key) throws Exception {
         long val = counter.getAndIncrement(key);
-        dao.storeKeyValue(key, val);
+        dao.storeKeyValue(key, val + 1);
         return new CounterValue(key, val);
     }
 

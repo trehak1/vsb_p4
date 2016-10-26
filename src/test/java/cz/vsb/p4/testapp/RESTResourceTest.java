@@ -17,7 +17,7 @@ public class RESTResourceTest {
     private static final String KEY = "test-key";
 
     @Test
-    public void shouldCallGetAndIncrementOnCounterService() {
+    public void shouldCallGetAndIncrementOnCounterService() throws Exception {
         CounterService counterService = Mockito.mock(CounterService.class);
 
         RESTResource resource = new RESTResource(counterService);
