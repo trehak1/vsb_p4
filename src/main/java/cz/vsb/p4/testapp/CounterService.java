@@ -26,7 +26,10 @@ public class CounterService {
     @PostConstruct
     public void postConstruct() {
         Map<String, Long> vals = dao.loadKeyValues();
-        vals.entrySet().forEach(entry -> counter.put(entry.getKey(), entry.getValue()));
+//        vals.entrySet().forEach(entry -> counter.put(entry.getKey(), entry.getValue()));
+        for (Map.Entry<String, Long> entry : vals.entrySet()) {
+            counter.put(entry.getKey(), entry.getValue());
+        }
     }
 
     public void set(String key, long val) {
