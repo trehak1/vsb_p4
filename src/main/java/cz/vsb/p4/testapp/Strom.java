@@ -28,6 +28,12 @@ public class Strom {
         return faze;
     }
 
+    public Integer dejCasFaze(Faze faze) {
+        return this.faze.get(faze);
+    }
+
+
+
     public String getNazev() {
         return nazev;
     }
