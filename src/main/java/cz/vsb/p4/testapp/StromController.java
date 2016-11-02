@@ -23,18 +23,6 @@ public class StromController {
         this.stromRepository = stromRepository;
     }
 
-    @RequestMapping(method = RequestMethod.POST, path = "/getValue")
-    public String readCounterValue(@RequestParam("key") String key,
-                                   @RequestParam("kvet") String kvet,
-                                   Model model) throws Exception {
-        System.out.println("Kvet: " + kvet);
-        counterService.set(key, 1);
-        counterService.setKvet(key, kvet);
-        CounterValue counterValue = counterService.get(key);
-        model.addAttribute("counterValue", counterValue);
-        return "/value";
-    }
-
     @RequestMapping(method = RequestMethod.GET, path = "/")
     public String listAll(Model model) {
         Map<String, Strom> stromy = stromRepository.getAll();
@@ -43,11 +31,16 @@ public class StromController {
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/delete/{nazev}")
-    public String deleteTree(@PathVariable("nazev") String nazev) {
+    public String deleteStrom(@PathVariable("nazev") String nazev) {
         stromRepository.deleteStrom(nazev);
         return "/index";
     }
 
-
+    @RequestMapping(method = RequestMethod.POST, path = "/createStrom")
+    public String createStrom(@RequestParam("nazev") String nazev) {
+        Strom strom = new Strom(nazev);
+        stromRepository.saveStrom(strom);
+        return "/index";
+    }
 
 }
