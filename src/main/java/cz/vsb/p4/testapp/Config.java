@@ -28,7 +28,7 @@ public class Config extends ResourceConfig implements EmbeddedServletContainerCu
     public void registerEndpoints() {
         // jersey
         register(LoggingFilter.class);
-        register(RESTResource.class);
+        register(StromRESTResource.class);
     }
 
     @Override

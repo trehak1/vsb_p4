@@ -13,23 +13,19 @@ import javax.ws.rs.Produces;
 /**
  * Created by trehak on 10.10.2016.
  */
-@Path("/counter")
+@Path("/")
 @Produces("application/json")
 @Singleton
-public class RESTResource {
+public class StromRESTResource {
 
-    private final CounterService counterService;
+    private final StromRepository stromRepository;
 
     @Autowired
-    public RESTResource(CounterService counterService) {
-        this.counterService = counterService;
+    public StromRESTResource(StromRepository stromRepository) {
+        this.stromRepository = stromRepository;
     }
 
-    @GET
-    @Path("/inc/{key}")
-    public CounterValue getAndIncrementCounterValue(@PathParam("key") String key) throws Exception {
-        return counterService.getAndIncrement(key);
-    }
+    // TODO implement REST strom manipulace
 
     @GET
     @Path("/echo/{text}")
