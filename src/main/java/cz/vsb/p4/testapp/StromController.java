@@ -38,10 +38,11 @@ public class StromController {
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/createStrom")
-    public String createStrom(@RequestParam("nazev") String nazev) {
-        Strom strom = new Strom(nazev);
+    public String createStrom(@RequestParam("nazevStromu") String nazevStromu,
+                              @RequestParam("param1") Long param1) {
+        Strom strom = new Strom(nazevStromu);
         stromRepository.saveStrom(strom);
-        return "/index";
+        return "redirect:/";
     }
 
 }

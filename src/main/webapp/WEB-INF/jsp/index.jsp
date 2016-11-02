@@ -16,11 +16,11 @@ Stromy:
 </c:forEach>
 </table>
 
-<form action="/getValue" method="POST" ><br>
-    Counter key: <input type="text" name="key"><br>
-    Kvet: <input type="text" name="kvet"><br>
-
-    <input type="submit" value="Get" >
+<form action="/createStrom" method="POST" ><br>
+    Nazev stromu: <input type="text" name="nazevStromu"><br>
+    param1: <input type="text" name="param1"><br>
+    param2: <input type="text" name="param2"><br>
+    <input type="submit" value="Create">
 </form>
 
 <br/>
