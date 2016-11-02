@@ -10,6 +10,7 @@
 
 Key: ${counterValue.key} <br/>
 Val: ${counterValue.value} <br/>
+Kvet: ${counterValue.kvet} <br/>
 
 <a href="/">Back home</a>
 

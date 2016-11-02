@@ -36,7 +36,7 @@ public class CounterDAO {
     @PostConstruct
     public void initStructure() throws Exception {
         try (Connection c = dataSource.getConnection()) {
-            try (PreparedStatement st = c.prepareStatement("create table if not exists counter_values (key text, val long)")) {
+            try (PreparedStatement st = c.prepareStatement("create table if not exists counter_values (key text, val long, kvet text)")) {
                 st.executeUpdate();
             }
         }
@@ -48,11 +48,12 @@ public class CounterDAO {
      * @param key   key name
      * @param value key value
      */
-    public void storeKeyValue(String key, long value) throws Exception {
+    public void storeKeyValue(String key, long value, String kvet) throws Exception {
         try (Connection c = dataSource.getConnection()) {
-            try (PreparedStatement st = c.prepareStatement("MERGE INTO counter_values KEY(key) VALUES (?,?)")) {
+            try (PreparedStatement st = c.prepareStatement("MERGE INTO counter_values KEY(key) VALUES (?,?,?)")) {
                 st.setString(1, key);
                 st.setLong(2, value);
+                st.setString(2, kvet);
                 st.executeUpdate();
             }
         }

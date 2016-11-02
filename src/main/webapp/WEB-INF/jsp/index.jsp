@@ -10,6 +10,7 @@
 
 <form action="/getValue" method="POST" ><br>
     Counter key: <input type="text" name="key"><br>
+    Kvet: <input type="text" name="kvet"><br>
 
     <input type="submit" value="Get" >
 </form>

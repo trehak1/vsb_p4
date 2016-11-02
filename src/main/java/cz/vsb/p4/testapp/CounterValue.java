@@ -6,19 +6,20 @@ package cz.vsb.p4.testapp;
 public class CounterValue {
 
     private final String key;
-    private final Long value;
+    private final Strom strom;
 
-    public CounterValue(String key, Long value) {
+    public CounterValue(String key, Strom strom) {
         this.key = key;
-        this.value = value;
+        this.strom = strom;
     }
+
 
     public String getKey() {
         return key;
     }
 
-    public Long getValue() {
-        return value;
+    public Long getStrom() {
+        return strom;
     }
 
 }

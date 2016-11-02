@@ -22,7 +22,11 @@ public class CounterController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/getValue")
     public String readCounterValue(@RequestParam("key") String key,
-                                   Model model) {
+                                   @RequestParam("kvet") String kvet,
+                                   Model model) throws Exception {
+        System.out.println("Kvet: " + kvet);
+        counterService.set(key, 1);
+        counterService.setKvet(key, kvet);
         CounterValue counterValue = counterService.get(key);
         model.addAttribute("counterValue", counterValue);
         return "/value";
