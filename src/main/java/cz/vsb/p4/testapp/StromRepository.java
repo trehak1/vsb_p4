@@ -25,4 +25,7 @@ public class StromRepository {
         stromy.put(strom.getNazev(), strom);
     }
 
+    public Map<String, Strom> getAll() {
+        return stromy;
+    }
 }
