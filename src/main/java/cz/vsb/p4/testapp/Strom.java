@@ -10,23 +10,25 @@ import java.util.Map;
 public class Strom {
 
     private String nazev;
-    private Map<Integer, Faze> faze = Maps.newHashMap();
+    private Map<Faze, Integer> faze = Maps.newHashMap();
 
     public Strom(String nazev) {
         this.nazev = nazev;
     }
 
     public void pridejFazi(Integer kdy, Faze faze) {
-        this.faze.put(kdy, faze);
+        this.faze.put(faze, kdy);
     }
 
-    public void odstranFazi(Integer kdy) {
-        this.faze.remove(kdy);
+    public void odstranFazi(Faze faze) {
+        this.faze.remove(faze);
     }
 
-    public Map<Integer, Faze> vratFaze() {
+    public Map<Faze, Integer> vratFaze() {
         return faze;
     }
 
-
+    public String getNazev() {
+        return nazev;
+    }
 }
