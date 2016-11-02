@@ -6,7 +6,15 @@
 
 </head>
 <body>
-<h1>Counting applications - count events occured</h1>
+<h1>Stromova aplikace</h1>
+
+Stromy:
+<table>
+<thead>
+<th><td>Nazev</td><td>Smazat</td></th>
+</thead>
+<tr><td></td><td></td></tr>
+</table>
 
 <form action="/getValue" method="POST" ><br>
     Counter key: <input type="text" name="key"><br>
