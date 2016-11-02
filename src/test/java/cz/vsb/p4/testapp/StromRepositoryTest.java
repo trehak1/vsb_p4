@@ -38,5 +38,20 @@ public class StromRepositoryTest {
         Assert.assertNull(strom);
     }
 
+    @Test
+    public void shouldReplaceStrom() {
+        repository.saveStrom(STROM);
+        Strom retrieved = repository.getStrom(NAZEV);
+        Assert.assertTrue(retrieved.vratFaze().isEmpty());
+
+        Strom strom2 = new Strom(NAZEV);
+        strom2.pridejFazi(1, Faze.RASENI);
+        Strom retrieved2 = repository.getStrom(NAZEV);
+
+        Assert.assertFalse(retrieved.vratFaze().isEmpty());
+        Assert.assertTrue(1L == retrieved2.dejCasFaze(Faze.RASENI));
+        Assert.assertEquals(strom2, retrieved2);
+    }
+
 
 }
