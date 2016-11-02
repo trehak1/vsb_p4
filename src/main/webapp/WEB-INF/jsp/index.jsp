@@ -10,10 +10,10 @@
 
 Stromy:
 <table>
-<thead>
-<th><td>Nazev</td><td>Smazat</td></th>
-</thead>
-<tr><td></td><td></td></tr>
+<tr><th>Nazev</th><th>Smazat</th></tr>
+<c:forEach items="${stromy.keySet()}" var="nazev">
+    <tr><td><c:out value="${nazev}"/></td><td><a href="/delete/${nazev}">smazat</a></td></tr>
+</c:forEach>
 </table>
 
 <form action="/getValue" method="POST" ><br>

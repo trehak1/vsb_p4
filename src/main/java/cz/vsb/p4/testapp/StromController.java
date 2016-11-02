@@ -21,6 +21,7 @@ public class StromController {
     @Autowired
     public StromController(StromRepository stromRepository) {
         this.stromRepository = stromRepository;
+        stromRepository.saveStrom(new Strom("Testovaci strom"));
     }
 
     @RequestMapping(method = RequestMethod.GET, path = "/")
@@ -33,7 +34,7 @@ public class StromController {
     @RequestMapping(method = RequestMethod.GET, path = "/delete/{nazev}")
     public String deleteStrom(@PathVariable("nazev") String nazev) {
         stromRepository.deleteStrom(nazev);
-        return "/index";
+        return "redirect:/";
     }
 
     @RequestMapping(method = RequestMethod.POST, path = "/createStrom")
